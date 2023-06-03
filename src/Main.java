@@ -46,9 +46,6 @@ public class Main {
             System.out.println("что-то пошло не так в блоке Main - Paths");
         }
 
-        System.out.println("тестим git");
-
-
 
         Key key = new Key();
 
