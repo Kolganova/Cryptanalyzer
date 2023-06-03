@@ -63,9 +63,10 @@ public class Main {
                 } catch (NumberFormatException e) {
                     throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между 0 и " + alphabet.getAlphabet().length + ".");
                 }
-                if (!key.validationOfKey(alphabet.getAlphabet().length)) {// exception не выходит с большим числом
+                if (!(key.validationOfKey(alphabet.getAlphabet().length))) {// exception не выходит с большим числом
                     throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между 0 и " + alphabet.getAlphabet().length + ".");
                 }
+                System.out.println(key.getValue());
             } catch (InvalidKeyException | NumberFormatException | KeyFieldIsEmptyException e) {
                 app.setTextOfErrors(e.getMessage() + "\n");
                 app.incrementErrorCounter();
