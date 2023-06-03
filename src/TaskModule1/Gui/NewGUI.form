@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="TaskModule1.Gui.NewGUI">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="21" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="26" y="29" width="711" height="822"/>
+    </constraints>
+    <properties>
+      <background color="-4868960"/>
+      <enabled value="false"/>
+    </properties>
+    <border type="none" title="">
+      <title-color color="-16777216"/>
+    </border>
+    <children>
+      <component id="5000c" class="javax.swing.JLabel" binding="requestToAction">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="81f94"/>
+          <text value="Введите:  1 - для зашифровки текста, 2 - для расшифровки текста, 3 - для взлома шифра"/>
+        </properties>
+      </component>
+      <component id="373bd" class="javax.swing.JRadioButton" binding="action2Button">
+        <constraints>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="2"/>
+        </properties>
+      </component>
+      <component id="a22e1" class="javax.swing.JLabel" binding="requestToPath">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Введите абсолютный путь к файлу:"/>
+        </properties>
+      </component>
+      <component id="ccae7" class="javax.swing.JLabel" binding="requestToKey">
+        <constraints>
+          <grid row="11" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Введите ключ (для вариантов 1 и 2):"/>
+        </properties>
+      </component>
+      <component id="3920b" class="javax.swing.JButton" binding="resultButton">
+        <constraints>
+          <grid row="15" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16777216"/>
+          <font style="1"/>
+          <foreground color="-4504520"/>
+          <text value="Получить результат!"/>
+        </properties>
+      </component>
+      <vspacer id="e9b02">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="93101">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="284cd">
+        <constraints>
+          <grid row="10" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="be1ef">
+        <constraints>
+          <grid row="14" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="17da8">
+        <constraints>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+            <preferred-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="7c05b">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="17715">
+        <constraints>
+          <grid row="12" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="f1f99">
+        <constraints>
+          <grid row="16" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <component id="d40a3" class="javax.swing.JTextPane" binding="GreetingsAndInstructions">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="5" vsize-policy="6" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-4868960"/>
+          <editable value="false"/>
+          <enabled value="true"/>
+          <text value="Приветствуем в программе &quot;Шифр Цезаря&quot;!&#10;&#10;На данный момент она поддерживает только русский язык.&#10;&#10;Для правильной работы программы, пожалуйста, следуйте инструкциям ниже:&#10;&#10;- подготовьте абсолютный путь к Вашему текущему файлу.&#10;- проследите что в Вашем файле соблюдены правила пунктуации, иначе правильность работы программы не гарантирована.&#10;- проследите что Ваш текстовый файл имеет подходящее расширение т.е. файл не форматирован (rtd - плохо, txt - хорошо.&#10;- текст Вашего файла должен содержать хотя бы 2 слова.&#10;- подготовтье ключ, если он у Вас есть (ключ должен быть в пределах от 0 до 41)."/>
+        </properties>
+      </component>
+      <vspacer id="994f4">
+        <constraints>
+          <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <vspacer id="f8ba1">
+        <constraints>
+          <grid row="20" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="10"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <component id="5a07a" class="javax.swing.JTextField" binding="valueOfKey">
+        <constraints>
+          <grid row="13" column="2" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <hspacer id="b3f09">
+        <constraints>
+          <grid row="3" column="0" row-span="9" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="5" height="-1"/>
+          </grid>
+        </constraints>
+      </hspacer>
+      <hspacer id="b834">
+        <constraints>
+          <grid row="17" column="6" row-span="3" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="5" height="-1"/>
+            <preferred-size width="-1" height="200"/>
+          </grid>
+        </constraints>
+      </hspacer>
+      <component id="3c71a" class="javax.swing.JRadioButton" binding="action1Button">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <enabled value="true"/>
+          <text value="1"/>
+        </properties>
+      </component>
+      <component id="e56d3" class="javax.swing.JRadioButton" binding="action3Button">
+        <constraints>
+          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="3"/>
+        </properties>
+      </component>
+      <component id="81f94" class="javax.swing.JTextArea" binding="pathToFile">
+        <constraints>
+          <grid row="9" column="2" row-span="1" col-span="3" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="20"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="group">
+      <member id="3c71a"/>
+      <member id="373bd"/>
+      <member id="e56d3"/>
+    </group>
+  </buttonGroups>
+</form>

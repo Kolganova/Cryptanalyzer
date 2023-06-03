@@ -1,0 +1,146 @@
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	
++++ b/src/Main.java	
+@@ -99,13 +99,11 @@
+ 
+         if (app.getAction3Button().isSelected()) {
+             try {
+-                System.out.println("начали читать из файла");
+                 WorkerWithFile.readFromFile(paths.getCurrentPath());
+ 
+                 CypherWithoutKey cypherWithoutKey = new CypherWithoutKey();
+                 cypherWithoutKey.setText(WorkerWithFile.getText());
+                 cypherWithoutKey.setAlphabet(alphabet.getAlphabet());
+-                System.out.println("записываем в файл");
+                 WorkerWithFile.writeToFile(paths.getCurrentPath(), cypherWithoutKey.getDecipheredText());
+             } catch (IOException e) {
+                 System.out.println("что-то пошло не так в блоке Main - WorkerWithFile, button3");
+Index: src/TaskModule1/Gui/NewGUI.form
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/TaskModule1/Gui/NewGUI.form b/src/TaskModule1/Gui/NewGUI.form
+--- a/src/TaskModule1/Gui/NewGUI.form	
++++ b/src/TaskModule1/Gui/NewGUI.form	
+@@ -124,7 +124,7 @@
+           <background color="-4868960"/>
+           <editable value="false"/>
+           <enabled value="true"/>
+-          <text value="Приветствуем в программе &quot;Шифр Цезаря&quot;!&#10;&#10;На данный момент она поддерживает только русский язык*&#10;&#10;Для правильной работы программы, пожалуйста, следуйте инструкциям ниже:&#10;&#10;- подготовьте абсоютный путь к Вашему текущему файлу.&#10;- проследите что в Вашем файле соблюдены правила пунктуации, иначе правильность работы программы не гарантирована.&#10;- проследите что Ваш текстовый файл имеет подходящее расширение т.е. файл не форматирован (rtd - плохо, txt - хорошо)&#10;- подготовтье ключ, если он у Вас есть (ключ должен быть в пределах от 0 до 41)."/>
++          <text value="Приветствуем в программе &quot;Шифр Цезаря&quot;!&#10;&#10;На данный момент она поддерживает только русский язык.&#10;&#10;Для правильной работы программы, пожалуйста, следуйте инструкциям ниже:&#10;&#10;- подготовьте абсолютный путь к Вашему текущему файлу.&#10;- проследите что в Вашем файле соблюдены правила пунктуации, иначе правильность работы программы не гарантирована.&#10;- проследите что Ваш текстовый файл имеет подходящее расширение т.е. файл не форматирован (rtd - плохо, txt - хорошо)&#10;- текст Вашего файла должен содержать хотя бы 2 слова.&#10;- подготовтье ключ, если он у Вас есть (ключ должен быть в пределах от 0 до 41)."/>
+         </properties>
+       </component>
+       <vspacer id="994f4">
+Index: src/TaskModule1/Gui/TestMain.java
+===================================================================
+diff --git a/src/TaskModule1/Gui/TestMain.java b/src/TaskModule1/Gui/TestMain.java
+deleted file mode 100644
+--- a/src/TaskModule1/Gui/TestMain.java	
++++ /dev/null	
+@@ -1,9 +0,0 @@
+-package TaskModule1.Gui;
+-
+-public class TestMain {
+-
+-    public static void main(String[] args) {
+-        NewGUI app = new NewGUI("Шифр Цезаря");
+-        app.setVisible(true);
+-    }
+-}
+Index: src/TaskModule1/Gui/oldGui/Main.java
+===================================================================
+diff --git a/src/TaskModule1/Gui/oldGui/Main.java b/src/TaskModule1/Gui/oldGui/Main.java
+deleted file mode 100644
+--- a/src/TaskModule1/Gui/oldGui/Main.java	
++++ /dev/null	
+@@ -1,9 +0,0 @@
+-package TaskModule1.Gui.oldGui;
+-
+-public class Main {
+-
+-    public static void main(String[] args) {
+-        SimpleGui app = new SimpleGui();
+-        app.setVisible(true);
+-    }
+-}
+Index: src/TaskModule1/Gui/oldGui/SimpleGui.java
+===================================================================
+diff --git a/src/TaskModule1/Gui/oldGui/SimpleGui.java b/src/TaskModule1/Gui/oldGui/SimpleGui.java
+deleted file mode 100644
+--- a/src/TaskModule1/Gui/oldGui/SimpleGui.java	
++++ /dev/null	
+@@ -1,49 +0,0 @@
+-package TaskModule1.Gui.oldGui;
+-
+-import TaskModule1.Gui.oldGui.ButtonEventListener;
+-
+-import javax.swing.*;
+-import java.awt.*;
+-
+-public class SimpleGui extends JFrame {
+-    JLabel greeting = new JLabel("Добрый день!\n");
+-    JLabel requestForNumberOfAction = new JLabel("Введите 1 если Вы хотите зашифровать текст (с ключом), 2 - расшифровать текст (с ключом)," +
+-            "\nвведите 3 если хотите взломать шифр (без ключа)");
+-    JRadioButton radio1 = new JRadioButton("1");
+-    JRadioButton radio2 = new JRadioButton("2");
+-    JRadioButton radio3 = new JRadioButton("3");
+-    JLabel requestForCurrentPath = new JLabel("Введите путь к Вашему файлу");
+-    JTextField currentPath = new JTextField("");
+-    JLabel labelWithKey = new JLabel("Введите ключ\n(для вариантов 1 или 2)");
+-    JTextField key = new JTextField("");
+-    JButton buttonToGetResult = new JButton("Получить результат!");
+-
+-    public SimpleGui() {
+-        super("Шифр Цезаря");
+-        this.setBounds(100, 100, 500, 400);
+-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+-
+-        Container container = this.getContentPane();
+-        container.setLayout(new GridLayout(6, 2, 2, 2));
+-        container.add(greeting);
+-        container.add(requestForNumberOfAction);
+-
+-        ButtonGroup group = new ButtonGroup();
+-        group.add(radio1);
+-        group.add(radio2);
+-        group.add(radio3);
+-        container.add(radio1);
+-        radio1.setSelected(true);
+-        container.add(radio2);
+-        container.add(radio3);
+-
+-        container.add(requestForCurrentPath);
+-        container.add(currentPath);
+-
+-        container.add(labelWithKey);
+-        container.add(key);
+-
+-        buttonToGetResult.addActionListener(new ButtonEventListener());
+-        container.add(buttonToGetResult);
+-    }
+-}
+Index: src/TaskModule1/Gui/oldGui/ButtonEventListener.java
+===================================================================
+diff --git a/src/TaskModule1/Gui/oldGui/ButtonEventListener.java b/src/TaskModule1/Gui/oldGui/ButtonEventListener.java
+deleted file mode 100644
+--- a/src/TaskModule1/Gui/oldGui/ButtonEventListener.java	
++++ /dev/null	
+@@ -1,12 +0,0 @@
+-package TaskModule1.Gui.oldGui;
+-
+-import javax.swing.*;
+-import java.awt.event.ActionEvent;
+-import java.awt.event.ActionListener;
+-
+-public class ButtonEventListener implements ActionListener {
+-    @Override
+-    public void actionPerformed(ActionEvent e) {
+-        JOptionPane.showMessageDialog(null, "Файл был успешно создан в той же директории!");
+-    }
+-}
