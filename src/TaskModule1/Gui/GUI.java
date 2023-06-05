@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NewGUI extends JFrame {
+public class GUI extends JFrame {
     private JPanel mainPanel;
     private JLabel requestToAction;
     private JRadioButton action1Button;
@@ -22,7 +22,7 @@ public class NewGUI extends JFrame {
     private byte errorCounter = 0;
     private boolean isTextOfErrorsIsReady;
 
-    public NewGUI(String title) {
+    public GUI(String title) {
         super(title);
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

@@ -1,6 +1,6 @@
 package TaskModule1;
 
-import TaskModule1.Gui.NewGUI;
+import TaskModule1.Gui.GUI;
 import TaskModule1.MethodOne.CypherWithKey;
 import TaskModule1.MethodOne.InvalidKeyException;
 import TaskModule1.MethodOne.Key;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     public static void main(String[] args) {
 
-        NewGUI app = new NewGUI("Шифр Цезаря");
+        GUI app = new GUI("Шифр Цезаря");
         app.setVisible(true);
 
         char[] charAlphabet = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'к', 'л', 'м', 'н',
