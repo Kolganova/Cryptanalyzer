@@ -1,4 +1,5 @@
-import TaskModule1.*;
+package TaskModule1;
+
 import TaskModule1.Gui.NewGUI;
 import TaskModule1.MethodOne.CypherWithKey;
 import TaskModule1.MethodOne.InvalidKeyException;
@@ -43,7 +44,7 @@ public class Main {
             app.setTextOfErrors(e.getMessage() + "\n");
             app.incrementErrorCounter();
         } catch (InterruptedException ie) {
-            System.out.println("что-то пошло не так в блоке Main - Paths");
+            System.out.println("что-то пошло не так в блоке TaskModule1.Main - Paths");
         }
 
 
@@ -72,7 +73,7 @@ public class Main {
                 app.setTextOfErrors(e.getMessage() + "\n");
                 app.incrementErrorCounter();
             } catch (InterruptedException ie) {
-                System.out.println("что-то пошло не так в блоке Main - Key");
+                System.out.println("что-то пошло не так в блоке TaskModule1.Main - Key");
             }
 
             try {
@@ -93,7 +94,7 @@ public class Main {
                     WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getDecipheredText());
                 }
             } catch (IOException e) {
-                System.out.println("что-то пошло не так в блоке Main - WorkerWithFile, button1 | button2");
+                System.out.println("что-то пошло не так в блоке TaskModule1.Main - WorkerWithFile, button1 | button2");
             }
         }
 
@@ -108,7 +109,7 @@ public class Main {
                 cypherWithoutKey.setAlphabet(alphabet.getAlphabet());
                 WorkerWithFile.writeToFile(paths.getCurrentPath(), cypherWithoutKey.getDecipheredText());
             } catch (IOException e) {
-                System.out.println("что-то пошло не так в блоке Main - WorkerWithFile, button3");
+                System.out.println("что-то пошло не так в блоке TaskModule1.Main - WorkerWithFile, button3");
             }
         }
 

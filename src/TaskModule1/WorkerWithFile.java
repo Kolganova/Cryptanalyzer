@@ -7,13 +7,12 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class WorkerWithFile {
-    private static List<String> list;
-    private static StringBuilder text = new StringBuilder();
+    private static final StringBuilder text = new StringBuilder();
 
     public static void readFromFile(Path path) throws IOException {
-        list = Files.readAllLines(path);
-        for (int i = 0; i < list.size(); i++) {
-            text.append(list.get(i));
+        List<String> list = Files.readAllLines(path);
+        for (String temp : list) {
+            text.append(temp);
         }
     }
 
