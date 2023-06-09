@@ -49,6 +49,7 @@ public class Main {
 
 
         Key key = new Key();
+        key.MinMaxSetter(alphabet.getAlphabet().length);
 
         if (app.getAction1Button().isSelected() || app.getAction2Button().isSelected()) {
             try {
@@ -63,11 +64,11 @@ public class Main {
                 try {
                     key.setValue(Integer.parseInt(keyValueString));
                 } catch (NumberFormatException e) {
-                    throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между 0 и " + alphabet.getAlphabet().length + ".");
+                    throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между " + key.getMIN_VALUE() + " и " + key.getMAX_VALUE() + ".");
                 }
-//                if (!(key.validationOfKey(alphabet.getAlphabet().length))) {
-//                    throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между 0 и " + alphabet.getAlphabet().length + ".");
-//                }
+                if (!(key.isKeyValid())) {
+                    throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между " + key.getMIN_VALUE() + " и " + key.getMAX_VALUE() + ".");
+                }
 
             } catch (InvalidKeyException | NumberFormatException | KeyFieldIsEmptyException e) {
                 app.setTextOfErrors(e.getMessage() + "\n");
@@ -89,11 +90,22 @@ public class Main {
                 paths.setNewPath();
 
                 if (app.getAction1Button().isSelected()) {
-                    WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getEncryptedText());
+                    if (cypherWithKey.getKey() > 0)
+                        WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getEncryptedText());
+                    else {
+                        cypherWithKey.changeMarkOnKey();
+                        WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getDecipheredText());
+                    }
                 } else if (app.getAction2Button().isSelected()) {
-                    WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getDecipheredText());
+                    if (cypherWithKey.getKey() > 0)
+                        WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getDecipheredText());
+                    else {
+                        cypherWithKey.changeMarkOnKey();
+                        WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getEncryptedText());
+                    }
                 }
             } catch (IOException e) {
+                e.printStackTrace();
                 System.out.println("что-то пошло не так в блоке TaskModule1.Main - WorkerWithFile, button1 | button2");
             }
         }
@@ -113,7 +125,6 @@ public class Main {
                 System.out.println("что-то пошло не так в блоке TaskModule1.Main - WorkerWithFile, button3");
             }
         }
-
     }
 
 }

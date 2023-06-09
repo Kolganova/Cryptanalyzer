@@ -81,4 +81,12 @@ public class CypherWithKey implements Encrypt, Decipher {
     public void setText(StringBuilder text) {
         this.text = text;
     }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void changeMarkOnKey() {
+        setKey(-1 * key);
+    }
 }
