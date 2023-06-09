@@ -1,10 +1,10 @@
-package TaskModule1.Gui;
+package TaskModule1.GraphicalUserInterface;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI extends JFrame {
+public class Gui extends JFrame {
     private JPanel mainPanel;
     private JLabel requestToAction;
     private JRadioButton action1Button;
@@ -22,7 +22,7 @@ public class GUI extends JFrame {
     private byte errorCounter = 0;
     private boolean isTextOfErrorsIsReady;
 
-    public GUI(String title) {
+    public Gui(String title) {
         super(title);
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);

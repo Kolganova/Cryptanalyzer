@@ -49,7 +49,7 @@ public class Paths {
     }
 
     public void setFileExtension() {
-        if (this.nameOfCurrentPath.contains(".")){
+        if (this.nameOfCurrentPath.contains(".")) {
             int indexOfDot = this.nameOfCurrentPath.indexOf('.');
             String fileExtension = this.nameOfCurrentPath.substring(indexOfDot);
 

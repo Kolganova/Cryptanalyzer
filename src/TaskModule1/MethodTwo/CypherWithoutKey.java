@@ -1,30 +1,30 @@
 package TaskModule1.MethodTwo;
 
-import TaskModule1.Deciphered;
+import TaskModule1.Decipher;
 
-public class CypherWithoutKey implements Deciphered {
-    private int key;
+public class CypherWithoutKey implements Decipher {
     private char[] alphabet;
     private StringBuilder text;
 
     @Override
     public String getDecipheredText() {
+        int key;
         String decipheredText = "";
-        char temp;
+        char currentChar;
         int lengthOfAlphabet = alphabet.length;
 
         for (key = 1; key < alphabet.length; key++) {
 
             for (int i = 0; i < text.length(); i++) {
                 for (int j = 0; j < lengthOfAlphabet; j++) {
-                    temp = text.charAt(i);
-                    if (Character.toLowerCase(temp) == alphabet[j]) {
+                    currentChar = text.charAt(i);
+                    if (Character.toLowerCase(currentChar) == alphabet[j]) {
                         if (j - key < 0) {
-                            temp = alphabet[lengthOfAlphabet + j - key];
+                            currentChar = alphabet[lengthOfAlphabet + j - key];
                         } else {
-                            temp = alphabet[j - key];
+                            currentChar = alphabet[j - key];
                         }
-                        decipheredText += temp;
+                        decipheredText += currentChar;
                         break;
                     }
                 }

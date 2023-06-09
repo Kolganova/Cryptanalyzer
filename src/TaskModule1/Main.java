@@ -1,6 +1,6 @@
 package TaskModule1;
 
-import TaskModule1.Gui.GUI;
+import TaskModule1.GraphicalUserInterface.Gui;
 import TaskModule1.MethodOne.CypherWithKey;
 import TaskModule1.MethodOne.InvalidKeyException;
 import TaskModule1.MethodOne.Key;
@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     public static void main(String[] args) {
 
-        GUI app = new GUI("Шифр Цезаря");
+        Gui app = new Gui("Шифр Цезаря");
         app.setVisible(true);
 
         char[] charAlphabet = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'к', 'л', 'м', 'н',
@@ -65,10 +65,10 @@ public class Main {
                 } catch (NumberFormatException e) {
                     throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между 0 и " + alphabet.getAlphabet().length + ".");
                 }
-                if (!(key.validationOfKey(alphabet.getAlphabet().length))) {// exception не выходит с большим числом
-                    throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между 0 и " + alphabet.getAlphabet().length + ".");
-                }
-                System.out.println(key.getValue());
+//                if (!(key.validationOfKey(alphabet.getAlphabet().length))) {
+//                    throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между 0 и " + alphabet.getAlphabet().length + ".");
+//                }
+
             } catch (InvalidKeyException | NumberFormatException | KeyFieldIsEmptyException e) {
                 app.setTextOfErrors(e.getMessage() + "\n");
                 app.incrementErrorCounter();
@@ -89,7 +89,7 @@ public class Main {
                 paths.setNewPath();
 
                 if (app.getAction1Button().isSelected()) {
-                    WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getCipheredText());
+                    WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getEncryptedText());
                 } else if (app.getAction2Button().isSelected()) {
                     WorkerWithFile.writeToFile(paths.getNewPath(), cypherWithKey.getDecipheredText());
                 }
@@ -105,6 +105,7 @@ public class Main {
                 WorkerWithFile.readFromFile(paths.getCurrentPath());
 
                 CypherWithoutKey cypherWithoutKey = new CypherWithoutKey();
+
                 cypherWithoutKey.setText(WorkerWithFile.getText());
                 cypherWithoutKey.setAlphabet(alphabet.getAlphabet());
                 WorkerWithFile.writeToFile(paths.getCurrentPath(), cypherWithoutKey.getDecipheredText());

@@ -1,9 +1,9 @@
 package TaskModule1.MethodOne;
 
-import TaskModule1.Ciphered;
-import TaskModule1.Deciphered;
+import TaskModule1.Encrypt;
+import TaskModule1.Decipher;
 
-public class CypherWithKey implements Ciphered, Deciphered {
+public class CypherWithKey implements Encrypt, Decipher {
 
     private int key;
     private char[] alphabet;
@@ -13,25 +13,25 @@ public class CypherWithKey implements Ciphered, Deciphered {
     public String getDecipheredText() {
         String decipheredText = "";
 //        boolean isUpperCase;
-        char temp;
+        char currentChar;
         int lengthOfAlphabet = alphabet.length;
         for (int i = 0; i < text.length(); i++) {
             for (int j = 0; j < lengthOfAlphabet; j++) {
-                temp = text.charAt(i);
+                currentChar = text.charAt(i);
 //                на случай если нужно не учитывать пробелы:
-//                if (temp == ' ')
+//                if (currentChar == ' ')
 //                    continue;
 //                на случай если нужно учитывать регистр:
-//                isUpperCase = Character.isUpperCase(temp);
-                if (Character.toLowerCase(temp) == alphabet[j]) {
+//                isUpperCase = Character.isUpperCase(currentChar);
+                if (Character.toLowerCase(currentChar) == alphabet[j]) {
                     if (j - key < 0) {
-                        temp = alphabet[lengthOfAlphabet + j - key];
+                        currentChar = alphabet[lengthOfAlphabet + j - key];
                     } else {
-                        temp = alphabet[j - key];
+                        currentChar = alphabet[j - key];
                     }
 //                    if (isUpperCase)
-//                        temp = Character.toUpperCase(temp);
-                    decipheredText += temp;
+//                        currentChar = Character.toUpperCase(currentChar);
+                    decipheredText += currentChar;
                     break;
                 }
             }
@@ -41,27 +41,27 @@ public class CypherWithKey implements Ciphered, Deciphered {
     }
 
     @Override
-    public String getCipheredText() {
+    public String getEncryptedText() {
         String cipheredText = "";
         //boolean isUpperCase = false;
-        char temp;
+        char currentChar;
         int lengthOfAlphabet = alphabet.length;
         for (int i = 0; i < text.length(); i++) {
             for (int j = 0; j < lengthOfAlphabet; j++) {
-                temp = text.charAt(i);
+                currentChar = text.charAt(i);
 //                на случай если нужно не учитывать пробелы:
-//                if (temp == ' ')
+//                if (currentChar == ' ')
 //                    continue;
-//                isUpperCase = Character.isUpperCase(temp);
-                if (Character.toLowerCase(temp) == alphabet[j]) {
+//                isUpperCase = Character.isUpperCase(currentChar);
+                if (Character.toLowerCase(currentChar) == alphabet[j]) {
                     if (j + key >= lengthOfAlphabet) {
-                        temp = alphabet[j + key - lengthOfAlphabet];
+                        currentChar = alphabet[j + key - lengthOfAlphabet];
                     } else {
-                        temp = alphabet[j + key];
+                        currentChar = alphabet[j + key];
                     }
 //                    if (isUpperCase)
-//                        temp = Character.toUpperCase(temp);
-                    cipheredText += temp;
+//                        currentChar = Character.toUpperCase(currentChar);
+                    cipheredText += currentChar;
                     break;
                 }
             }
