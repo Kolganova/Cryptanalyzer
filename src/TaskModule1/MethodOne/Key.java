@@ -1,33 +1,57 @@
 package TaskModule1.MethodOne;
 
-public class Key {
-    private int value;
-    private int MAX_VALUE;
-    private int MIN_VALUE;
+import TaskModule1.GraphicalUserInterface.Gui;
 
-    public void setValue(int value) {
-        this.value = value;
+import java.util.Objects;
+import java.util.concurrent.TimeUnit;
+
+public class Key {
+    private static int value;
+    private static int MAX_VALUE;
+    private static int MIN_VALUE;
+
+    private static void setValue(int valueOfKey) {
+        value = valueOfKey;
     }
 
-    public int getValue() {
+    public static int getValueOfKey() {
         return value;
     }
 
-    public boolean isKeyValid() {
+    private static boolean isKeyValid() {
 
         return (value >= MIN_VALUE && value <= MAX_VALUE);
     }
 
-    public void MinMaxSetter(int alphabetLength) {
-        this.MAX_VALUE = alphabetLength - 1;
-        this.MIN_VALUE = (alphabetLength - 1) * -1;
+    public static void minMaxValueSetter(int alphabetLength) {
+        MAX_VALUE = alphabetLength - 1;
+        MIN_VALUE = (alphabetLength - 1) * -1;
     }
 
-    public int getMAX_VALUE() {
-        return MAX_VALUE;
-    }
+    public static void setKeyToApp(Gui app) {
+        try {
+            while (app.getKey() == null) {
+                TimeUnit.MILLISECONDS.sleep(100);
+            }
+            String keyValueString = app.getKey();
 
-    public int getMIN_VALUE() {
-        return MIN_VALUE;
+            if (Objects.equals(keyValueString, "") || keyValueString == null) {
+                throw new KeyFieldIsEmptyException("Введите значение ключа!");
+            }
+            try {
+                setValue(Integer.parseInt(keyValueString));
+            } catch (NumberFormatException e) {
+                throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между " + MIN_VALUE + " и " + MAX_VALUE + ".");
+            }
+            if (!(isKeyValid())) {
+                throw new InvalidKeyException("Недостижимый ключ. Пожалуйста, введите число между " + MIN_VALUE + " и " + MAX_VALUE + ".");
+            }
+
+        } catch (InvalidKeyException | NumberFormatException | KeyFieldIsEmptyException e) {
+            app.setTextOfErrors(e.getMessage() + "\n");
+            app.incrementErrorCounter();
+        } catch (InterruptedException ie) {
+            System.out.println("что-то пошло не так в блоке установки Key");
+        }
     }
 }
