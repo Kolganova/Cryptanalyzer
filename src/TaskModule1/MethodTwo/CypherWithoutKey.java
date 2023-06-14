@@ -49,7 +49,6 @@ public class CypherWithoutKey implements Decipher {
                     throw new RuntimeException(e);
                 }
             }
-            // так бля доделать
         }
         return decipheredText;
     }
