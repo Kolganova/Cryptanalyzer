@@ -23,12 +23,14 @@ public class Key {
         return (value >= MIN_VALUE && value <= MAX_VALUE);
     }
 
-    public static void minMaxValueOfKeySetter(int alphabetLength) {
+    private static void minMaxValueOfKeySetter(int alphabetLength) {
         MAX_VALUE = alphabetLength - 1;
         MIN_VALUE = (alphabetLength - 1) * -1;
     }
 
-    public static void setKeyToApp(Gui app) {
+    public static void setKeyToApp(Gui app, int alphabetLength) {
+        minMaxValueOfKeySetter(alphabetLength);
+
         try {
             while (app.getKey() == null) {
                 TimeUnit.MILLISECONDS.sleep(100);

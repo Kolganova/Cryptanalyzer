@@ -18,30 +18,22 @@ public class Main {
         app.setVisible(true);
 
         getCurrentPathFromApp(app);
-
-        if (app.getAction1Button().isSelected() || app.getAction2Button().isSelected()) {
-            minMaxValueOfKeySetter(getAlphabet().length);
-            setKeyToApp(app);
-
-            try {
-                readFromFile(getCurrentPath());
+        try {
+            readFromFile(getCurrentPath());
+            if (app.getAction1Button().isSelected() || app.getAction2Button().isSelected()) {
+                setKeyToApp(app, getAlphabet().length);
                 CypherWithKey cypherWithKey = new CypherWithKey(getValueOfKey(), getAlphabet(), WorkerWithFile.getText());
                 setNewPath("/fileResult");
                 writeToFile(getNewPath(), cypherWithKey.getResult(app));
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-        }
-        app.setTextOfErrorsIsReady(true);
+            app.setTextOfErrorsIsReady(true);
 
-        if (app.getAction3Button().isSelected()) {
-            try {
-                readFromFile(getCurrentPath());
+            if (app.getAction3Button().isSelected()) {
                 CypherWithoutKey cypherWithoutKey = new CypherWithoutKey(getAlphabet(), WorkerWithFile.getText());
                 writeToFile(getCurrentPath(), cypherWithoutKey.getDecipheredText());
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
