@@ -1,6 +1,7 @@
 package TaskModule1.MethodTwo;
 
 import TaskModule1.Decipher;
+import TaskModule1.GraphicalUserInterface.Gui;
 import TaskModule1.PunctuationException;
 
 public class CypherWithoutKey implements Decipher {
@@ -42,15 +43,22 @@ public class CypherWithoutKey implements Decipher {
             else {
                 decipheredText = "";
             }
-            if (key == alphabet.length - 1) {
-                try {
-                    throw new PunctuationException("Текст не может быть расшифрован. Обратите внимание на правила пунктуации.");
-                } catch (PunctuationException e) {
-                    throw new RuntimeException(e);
-                }
-            }
         }
+
         return decipheredText;
+    }
+
+    public String getResult(Gui app) {
+        String result = getDecipheredText();
+        if ("".equals(result))
+            try {
+                throw new PunctuationException("Текст не может быть расшифрован. Обратите внимание на правила пунктуации.");
+            } catch (PunctuationException e) {
+                app.setTextOfErrors(e.getMessage() + "\n");
+                app.incrementErrorCounter();
+            }
+
+        return result;
     }
 
     public static class Conditions {

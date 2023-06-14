@@ -30,7 +30,7 @@ public class Main {
 
             if (app.getAction3Button().isSelected()) {
                 CypherWithoutKey cypherWithoutKey = new CypherWithoutKey(getAlphabet(), WorkerWithFile.getText());
-                writeToFile(getCurrentPath(), cypherWithoutKey.getDecipheredText());
+                writeToFile(getCurrentPath(), cypherWithoutKey.getResult(app));
             }
         } catch (IOException e) {
             e.printStackTrace();
