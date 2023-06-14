@@ -2,6 +2,7 @@ package TaskModule1.MethodOne;
 
 import TaskModule1.Encrypt;
 import TaskModule1.Decipher;
+import TaskModule1.GraphicalUserInterface.Gui;
 
 public class CypherWithKey implements Encrypt, Decipher {
 
@@ -17,6 +18,8 @@ public class CypherWithKey implements Encrypt, Decipher {
 
     @Override
     public String getDecipheredText() {
+        if (key < 0)
+            key *= (-1);
         String decipheredText = "";
 //        boolean isUpperCase;
         char currentChar;
@@ -48,6 +51,8 @@ public class CypherWithKey implements Encrypt, Decipher {
 
     @Override
     public String getEncryptedText() {
+        if (key < 0)
+            key *= (-1);
         String cipheredText = "";
         //boolean isUpperCase = false;
         char currentChar;
@@ -76,15 +81,11 @@ public class CypherWithKey implements Encrypt, Decipher {
         return cipheredText;
     }
 
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void changeMarkOnKey() {
-        setKey(-1 * key);
+    public String getResult(Gui app) {
+        if (app.getAction1Button().isSelected()) {
+            return key > 0 ? getEncryptedText() : getDecipheredText();
+        } else {
+            return key > 0 ? getDecipheredText() : getEncryptedText();
+        }
     }
 }

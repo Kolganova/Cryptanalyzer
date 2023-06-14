@@ -7,7 +7,7 @@ import TaskModule1.MethodTwo.*;
 import static TaskModule1.Alphabet.getAlphabet;
 import static TaskModule1.MethodOne.Key.*;
 import static TaskModule1.Paths.*;
-import static TaskModule1.WorkerWithFile.readFromFile;
+import static TaskModule1.WorkerWithFile.*;
 
 import java.io.IOException;
 
@@ -17,53 +17,30 @@ public class Main {
         Gui app = new Gui("Шифр Цезаря");
         app.setVisible(true);
 
-        setCurrentPathToApp(app);
-        minMaxValueOfKeySetter(getAlphabet().length);
+        getCurrentPathFromApp(app);
 
         if (app.getAction1Button().isSelected() || app.getAction2Button().isSelected()) {
+            minMaxValueOfKeySetter(getAlphabet().length);
             setKeyToApp(app);
 
             try {
                 readFromFile(getCurrentPath());
-
                 CypherWithKey cypherWithKey = new CypherWithKey(getValueOfKey(), getAlphabet(), WorkerWithFile.getText());
-                setNameOfNewPath("/fileResult");
-                setNewPath();
-
-                if (app.getAction1Button().isSelected()) {
-                    if (cypherWithKey.getKey() > 0)
-                        WorkerWithFile.writeToFile(getNewPath(), cypherWithKey.getEncryptedText());
-                    else {
-                        cypherWithKey.changeMarkOnKey();
-                        WorkerWithFile.writeToFile(getNewPath(), cypherWithKey.getDecipheredText());
-                    }
-                } else if (app.getAction2Button().isSelected()) {
-                    if (cypherWithKey.getKey() > 0)
-                        WorkerWithFile.writeToFile(getNewPath(), cypherWithKey.getDecipheredText());
-                    else {
-                        cypherWithKey.changeMarkOnKey();
-                        WorkerWithFile.writeToFile(getNewPath(), cypherWithKey.getEncryptedText());
-                    }
-                }
+                setNewPath("/fileResult");
+                writeToFile(getNewPath(), cypherWithKey.getResult(app));
             } catch (IOException e) {
                 e.printStackTrace();
-                System.out.println("что-то пошло не так в блоке TaskModule1.Main - WorkerWithFile, button1 | button2");
             }
         }
-
         app.setTextOfErrorsIsReady(true);
 
         if (app.getAction3Button().isSelected()) {
             try {
                 readFromFile(getCurrentPath());
-
-                CypherWithoutKey cypherWithoutKey = new CypherWithoutKey();
-
-                cypherWithoutKey.setText(WorkerWithFile.getText());
-                cypherWithoutKey.setAlphabet(getAlphabet());
-                WorkerWithFile.writeToFile(getCurrentPath(), cypherWithoutKey.getDecipheredText());
+                CypherWithoutKey cypherWithoutKey = new CypherWithoutKey(getAlphabet(), WorkerWithFile.getText());
+                writeToFile(getCurrentPath(), cypherWithoutKey.getDecipheredText());
             } catch (IOException e) {
-                System.out.println("что-то пошло не так в блоке TaskModule1.Main - WorkerWithFile, button3");
+                e.printStackTrace();
             }
         }
     }

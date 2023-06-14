@@ -1,10 +1,16 @@
 package TaskModule1.MethodTwo;
 
 import TaskModule1.Decipher;
+import TaskModule1.PunctuationException;
 
 public class CypherWithoutKey implements Decipher {
-    private char[] alphabet;
-    private StringBuilder text;
+    private final char[] alphabet;
+    private final StringBuilder text;
+
+    public CypherWithoutKey(char[] alphabet, StringBuilder text) {
+        this.alphabet = alphabet;
+        this.text = text;
+    }
 
     @Override
     public String getDecipheredText() {
@@ -37,17 +43,32 @@ public class CypherWithoutKey implements Decipher {
                 decipheredText = "";
             }
             if (key == alphabet.length - 1) {
-                decipheredText = "Текст не может быть расшифрован. Обратите внимание на правила пунктуации.";
+                try {
+                    throw new PunctuationException("Текст не может быть расшифрован. Обратите внимание на правила пунктуации.");
+                } catch (PunctuationException e) {
+                    throw new RuntimeException(e);
+                }
             }
+            // так бля доделать
         }
         return decipheredText;
     }
 
-    public void setAlphabet(char[] alphabet) {
-        this.alphabet = alphabet;
+    public static class Conditions {
+        String text;
+
+        public Conditions(String text) {
+            this.text = text;
+        }
+
+        public boolean isContainsSpace() {
+            return text.contains(" ");
+        }
+
+        public boolean isEndsWithPunctuationMark() {
+            return text.endsWith(".") || text.endsWith("!") || text.endsWith("?");
+        }
+
     }
 
-    public void setText(StringBuilder text) {
-        this.text = text;
-    }
 }

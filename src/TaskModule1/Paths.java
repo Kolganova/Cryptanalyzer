@@ -14,22 +14,14 @@ public class Paths {
     private static Path newPath;
     private static String fileExtension = "";
 
-    public static void setNameOfCurrentPath(String name) {
-        nameOfCurrentPath = name;
-    }
-
-    public static void setNameOfNewPath(String name) {
+    private static void setNameOfNewPath(String name) {
         setFileExtension();
-        nameOfNewPath = currentPath.getParent() + name + getFileExtension();
+        nameOfNewPath = currentPath.getParent() + name + fileExtension;
     }
 
-    public static void setCurrentPath() {
-        currentPath = Path.of(nameOfCurrentPath);
-    }
-
-    public static void setNewPath() throws IOException {
+    public static void setNewPath(String name) throws IOException {
+        setNameOfNewPath(name);
         newPath = Files.createFile(Path.of(nameOfNewPath));
-
     }
 
     private static void setFileExtension() {
@@ -40,10 +32,6 @@ public class Paths {
         }
     }
 
-    public static String getFileExtension() {
-        return fileExtension;
-    }
-
     public static Path getNewPath() {
         return newPath;
     }
@@ -52,7 +40,7 @@ public class Paths {
         return currentPath;
     }
 
-    public static void setCurrentPathToApp(Gui app) {
+    public static void getCurrentPathFromApp(Gui app) {
 
         try {
 
@@ -60,8 +48,8 @@ public class Paths {
                 TimeUnit.MILLISECONDS.sleep(100);
             }
 
-            setNameOfCurrentPath(app.getPath());
-            setCurrentPath();
+            nameOfCurrentPath = app.getPath();
+            currentPath = Path.of(nameOfCurrentPath);
 
             if ("".equals(currentPath.toString())) {
                 throw new PathFieldIsEmptyException("Введите абсолютный путь!");
@@ -76,7 +64,7 @@ public class Paths {
             app.setTextOfErrors(e.getMessage() + "\n");
             app.incrementErrorCounter();
         } catch (InterruptedException ie) {
-            System.out.println("что-то пошло не так в блоке TaskModule1.Main - Paths");
+            ie.printStackTrace();
         }
     }
 
