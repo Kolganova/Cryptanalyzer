@@ -19,7 +19,8 @@ public class Paths {
     }
 
     public static void setNameOfNewPath(String name) {
-        nameOfNewPath = name;
+        setFileExtension();
+        nameOfNewPath = currentPath.getParent() + name + getFileExtension();
     }
 
     public static void setCurrentPath() {
@@ -31,12 +32,11 @@ public class Paths {
 
     }
 
-    public static void setFileExtension() {
+    private static void setFileExtension() {
         if (nameOfCurrentPath.contains(".")) {
             int indexOfDot = nameOfCurrentPath.indexOf('.');
-            String fileExtensionName = nameOfCurrentPath.substring(indexOfDot);
 
-            fileExtension = fileExtensionName;
+            fileExtension = nameOfCurrentPath.substring(indexOfDot);
         }
     }
 

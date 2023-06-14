@@ -18,23 +18,16 @@ public class Main {
         app.setVisible(true);
 
         setCurrentPathToApp(app);
-
-        minMaxValueSetter(getAlphabet().length);
+        minMaxValueOfKeySetter(getAlphabet().length);
 
         if (app.getAction1Button().isSelected() || app.getAction2Button().isSelected()) {
-
             setKeyToApp(app);
 
             try {
                 readFromFile(getCurrentPath());
 
-                CypherWithKey cypherWithKey = new CypherWithKey();
-                cypherWithKey.setKey(getValueOfKey());
-                cypherWithKey.setText(WorkerWithFile.getText());
-                cypherWithKey.setAlphabet(getAlphabet());
-                setFileExtension();
-                setNameOfNewPath(getCurrentPath().getParent() + "/fileResult" + getFileExtension());
-
+                CypherWithKey cypherWithKey = new CypherWithKey(getValueOfKey(), getAlphabet(), WorkerWithFile.getText());
+                setNameOfNewPath("/fileResult");
                 setNewPath();
 
                 if (app.getAction1Button().isSelected()) {

@@ -23,7 +23,7 @@ public class Key {
         return (value >= MIN_VALUE && value <= MAX_VALUE);
     }
 
-    public static void minMaxValueSetter(int alphabetLength) {
+    public static void minMaxValueOfKeySetter(int alphabetLength) {
         MAX_VALUE = alphabetLength - 1;
         MIN_VALUE = (alphabetLength - 1) * -1;
     }

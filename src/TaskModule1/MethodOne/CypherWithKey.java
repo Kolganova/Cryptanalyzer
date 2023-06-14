@@ -6,8 +6,14 @@ import TaskModule1.Decipher;
 public class CypherWithKey implements Encrypt, Decipher {
 
     private int key;
-    private char[] alphabet;
-    private StringBuilder text;
+    private final char[] alphabet;
+    private final StringBuilder text;
+
+    public CypherWithKey(int key, char[] alphabet, StringBuilder text) {
+        this.key = key;
+        this.alphabet = alphabet;
+        this.text = text;
+    }
 
     @Override
     public String getDecipheredText() {
@@ -72,14 +78,6 @@ public class CypherWithKey implements Encrypt, Decipher {
 
     public void setKey(int key) {
         this.key = key;
-    }
-
-    public void setAlphabet(char[] alphabet) {
-        this.alphabet = alphabet;
-    }
-
-    public void setText(StringBuilder text) {
-        this.text = text;
     }
 
     public int getKey() {
