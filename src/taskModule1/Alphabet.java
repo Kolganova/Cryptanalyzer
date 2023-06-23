@@ -1,4 +1,4 @@
-package TaskModule1;
+package taskModule1;
 
 public class Alphabet {
     private static final char[] alphabet = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'к', 'л', 'м', 'н',

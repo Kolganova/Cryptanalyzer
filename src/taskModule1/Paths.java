@@ -1,7 +1,11 @@
-package TaskModule1;
+package taskModule1;
 
-import TaskModule1.GraphicalUserInterface.Gui;
+import taskModule1.exceptions.FileNotExistException;
+import taskModule1.exceptions.NotAbsolutePathException;
+import taskModule1.exceptions.PathFieldIsEmptyException;
+import taskModule1.graphicalUserInterface.Gui;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -13,10 +17,11 @@ public class Paths {
     private static Path currentPath;
     private static Path newPath;
     private static String fileExtension = "";
+    private static final String separator = File.separator;
 
     private static void setNameOfNewPath(String name) {
         setFileExtension();
-        nameOfNewPath = currentPath.getParent() + name + fileExtension;
+        nameOfNewPath = currentPath.getParent() + separator + name + fileExtension;
     }
 
     public static void setNewPath(String name) throws IOException {
@@ -51,7 +56,7 @@ public class Paths {
             nameOfCurrentPath = app.getPath();
             currentPath = Path.of(nameOfCurrentPath);
 
-            if ("".equals(currentPath.toString())) {
+            if (currentPath.toString().equals("")) {
                 throw new PathFieldIsEmptyException("Введите абсолютный путь!");
             } else if (!(currentPath.isAbsolute())) {
                 throw new NotAbsolutePathException("Путь не является абсолютным. Введите абсолютный путь.");

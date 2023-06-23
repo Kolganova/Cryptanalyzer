@@ -1,4 +1,4 @@
-package TaskModule1.GraphicalUserInterface;
+package taskModule1.graphicalUserInterface;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

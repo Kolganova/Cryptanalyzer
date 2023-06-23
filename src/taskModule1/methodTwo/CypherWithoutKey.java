@@ -1,8 +1,8 @@
-package TaskModule1.MethodTwo;
+package taskModule1.methodTwo;
 
-import TaskModule1.Decipher;
-import TaskModule1.GraphicalUserInterface.Gui;
-import TaskModule1.PunctuationException;
+import taskModule1.Decipher;
+import taskModule1.graphicalUserInterface.Gui;
+import taskModule1.exceptions.PunctuationException;
 
 public class CypherWithoutKey implements Decipher {
     private final char[] alphabet;

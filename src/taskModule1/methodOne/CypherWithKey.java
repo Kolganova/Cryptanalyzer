@@ -1,8 +1,8 @@
-package TaskModule1.MethodOne;
+package taskModule1.methodOne;
 
-import TaskModule1.Encrypt;
-import TaskModule1.Decipher;
-import TaskModule1.GraphicalUserInterface.Gui;
+import taskModule1.Encrypt;
+import taskModule1.Decipher;
+import taskModule1.graphicalUserInterface.Gui;
 
 public class CypherWithKey implements Encrypt, Decipher {
 
@@ -21,25 +21,17 @@ public class CypherWithKey implements Encrypt, Decipher {
         if (key < 0)
             key *= (-1);
         String decipheredText = "";
-//        boolean isUpperCase;
         char currentChar;
         int lengthOfAlphabet = alphabet.length;
         for (int i = 0; i < text.length(); i++) {
             for (int j = 0; j < lengthOfAlphabet; j++) {
                 currentChar = text.charAt(i);
-//                на случай если нужно не учитывать пробелы:
-//                if (currentChar == ' ')
-//                    continue;
-//                на случай если нужно учитывать регистр:
-//                isUpperCase = Character.isUpperCase(currentChar);
                 if (Character.toLowerCase(currentChar) == alphabet[j]) {
                     if (j - key < 0) {
                         currentChar = alphabet[lengthOfAlphabet + j - key];
                     } else {
                         currentChar = alphabet[j - key];
                     }
-//                    if (isUpperCase)
-//                        currentChar = Character.toUpperCase(currentChar);
                     decipheredText += currentChar;
                     break;
                 }
@@ -54,24 +46,17 @@ public class CypherWithKey implements Encrypt, Decipher {
         if (key < 0)
             key *= (-1);
         String cipheredText = "";
-        //boolean isUpperCase = false;
         char currentChar;
         int lengthOfAlphabet = alphabet.length;
         for (int i = 0; i < text.length(); i++) {
             for (int j = 0; j < lengthOfAlphabet; j++) {
                 currentChar = text.charAt(i);
-//                на случай если нужно не учитывать пробелы:
-//                if (currentChar == ' ')
-//                    continue;
-//                isUpperCase = Character.isUpperCase(currentChar);
                 if (Character.toLowerCase(currentChar) == alphabet[j]) {
                     if (j + key >= lengthOfAlphabet) {
                         currentChar = alphabet[j + key - lengthOfAlphabet];
                     } else {
                         currentChar = alphabet[j + key];
                     }
-//                    if (isUpperCase)
-//                        currentChar = Character.toUpperCase(currentChar);
                     cipheredText += currentChar;
                     break;
                 }

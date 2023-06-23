@@ -1,4 +1,4 @@
-package TaskModule1;
+package taskModule1.exceptions;
 
 public class NotAbsolutePathException extends Exception {
 

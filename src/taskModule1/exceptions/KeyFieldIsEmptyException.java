@@ -1,4 +1,4 @@
-package TaskModule1.MethodOne;
+package taskModule1.exceptions;
 
 public class KeyFieldIsEmptyException extends Exception {
     public KeyFieldIsEmptyException(String message) {

@@ -1,6 +1,8 @@
-package TaskModule1.MethodOne;
+package taskModule1.methodOne;
 
-import TaskModule1.GraphicalUserInterface.Gui;
+import taskModule1.exceptions.InvalidKeyException;
+import taskModule1.exceptions.KeyFieldIsEmptyException;
+import taskModule1.graphicalUserInterface.Gui;
 
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
